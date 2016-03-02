@@ -3,11 +3,12 @@
 <head>
   <title>foursquare :: Explore Sample</title>
 
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript" id="jquery"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"
+          id="jquery"></script>
 
 
-  <link href="leaflet/leaflet.css" type="text/css" rel="stylesheet" />
-  <link href="styles/apisamples.css" type="text/css" rel="stylesheet" />
+  <link href="leaflet/leaflet.css" type="text/css" rel="stylesheet"/>
+  <link href="styles/apisamples.css" type="text/css" rel="stylesheet"/>
 
   <script src="leaflet/leaflet.js" type="text/javascript"></script>
   <script src="scripts/apisamples.js" type="text/javascript"></script>
@@ -17,8 +18,16 @@
   <script src="scripts/wax.leaf.min.js" type="text/javascript"></script>
 
   <style type="text/css">
-    html { height: 100%; }
-    body { height: 100%; margin: 0; padding: 0; }
+    html {
+      height: 100%;
+    }
+
+    body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+
     /* Give our markers a background image */
     .leaflet-marker-icon {
       background: url(https://foursquare.com/img/pin-blue-transparent.png);
@@ -44,7 +53,8 @@
           '&redirect_uri=' + encodeURIComponent(redirect) +
           '&state=' + encodeURIComponent($.bbq.getState('req') || 'users/self');
       window.location.href = url;
-    };
+    }
+    ;
     if ($.bbq.getState('access_token')) {
       // If there is a token in the state, consume it
       var token = $.bbq.getState('access_token');
@@ -55,12 +65,11 @@
     }
 
     /* HTML 5 geolocation. */
-    navigator.geolocation.getCurrentPosition(function(data) {
+    navigator.geolocation.getCurrentPosition(function (data) {
       var lat = data['coords']['latitude'];
       var lng = data['coords']['longitude'];
       /* Create map. */
-      var map = new L.Map('map_canvas')
-          .setView(new L.LatLng(lat, lng), 15);
+      var map = new L.Map('map_canvas').setView(new L.LatLng(lat, lng), 15);
       /**
        * This is a sample map url that you need to change.
        * Sign up at http://mapbox.com/foursquare for a custom map url.
@@ -69,7 +78,8 @@
       wax.tilejson(mapboxUrl, function (tilejson) {
         map.addLayer(new wax.leaf.connector(tilejson));
       });
-    }
+    })
+
 
     //<![CDATA[
     // Javascript will go here.
