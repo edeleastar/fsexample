@@ -54,6 +54,24 @@
       doAuthRedirect();
     }
 
+    /* HTML 5 geolocation. */
+    navigator.geolocation.getCurrentPosition(function(data) {
+      var lat = data['coords']['latitude'];
+      var lng = data['coords']['longitude'];
+      /* Create map. */
+      var map = new L.Map('map_canvas')
+          .setView(new L.LatLng(lat, lng), 15);
+      /**
+       * This is a sample map url that you need to change.
+       * Sign up at http://mapbox.com/foursquare for a custom map url.
+       */
+      var mapboxUrl = 'http://a.tiles.mapbox.com/v3/foursquare.map-b7qq4a62.jsonp';
+      wax.tilejson(mapboxUrl, function (tilejson) {
+        map.addLayer(new wax.leaf.connector(tilejson));
+      });
+    }
+
+
     //<![CDATA[
     // Javascript will go here.
     //]]>
