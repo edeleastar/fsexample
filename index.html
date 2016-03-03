@@ -64,10 +64,12 @@
       doAuthRedirect();
     }
 
+    var lat;
+    var lng;
     /* HTML 5 geolocation. */
     navigator.geolocation.getCurrentPosition(function (data) {
-      var lat = data['coords']['latitude'];
-      var lng = data['coords']['longitude'];
+      lat = data['coords']['latitude'];
+      lng = data['coords']['longitude'];
       /* Create map. */
       var map = new L.Map('map_canvas').setView(new L.LatLng(lat, lng), 15);
       /**
